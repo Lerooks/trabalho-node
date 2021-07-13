@@ -16,21 +16,21 @@ module.exports = {
         const password = req.body.password;
 
         if (!email || !password)
-            return req.status(400).json({ msg: "Campos obrigatórios vazios! " });
+            return req.status(400).json({ data: "Campos obrigatórios vazios! " });
         try {
             const user = await User.findOne({
                 where: { email }
             })
             if (!user)
-                return res.status(404).json({ msg: "Usuário e senha inválidos" })
+                return res.status(404).json({ data: "Usuário e senha inválidos" })
             else
                 if (bcrypt.compareSync(password, user.password)) {
                     const token = generateToken(user.id);
                     return res
                         .status(200)
-                        .json({ msg: "Autenticação válida", token })
+                        .json({ data: "Autenticação válida", token })
                 } else {
-                    return res.status(404).json({ msg: "Usuário e senha inválidos" })
+                    return res.status(404).json({ data: "Usuário e senha inválidos" })
                 }
         } catch (error) {
             res.status(404).json(error)
@@ -38,11 +38,9 @@ module.exports = {
     },
     async logout(req, res) {
         try {
-            // logout
-            console.log(req.body);
-            req.status(400).json({ msg: "Campos obrigatórios vazios! " });
+            res.status(400).json({ data: "Campos obrigatórios vazios! " });
         } catch (error) {
-            res.status(404).json(error)
+            res.status(404).json({ error })
         }
     }
 }
