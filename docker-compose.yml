@@ -13,6 +13,7 @@ services:
     volumes: 
       - db-config:/etc/mysql
       - db-data:/var/lib/mysql
+      - ./db/backup/files/:/data_backup/data
   app:
     build:
       context: .
@@ -22,7 +23,7 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes: 
-      - .:/gestor-medico-node
+      - .:/trabalho-node
       - ./node_modules:/node_modules
     depends_on:
       - mysqldb
