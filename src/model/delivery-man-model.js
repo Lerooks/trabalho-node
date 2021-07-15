@@ -8,6 +8,10 @@ class DeliveryMan extends Sequelize.Model {
                 cpf: Sequelize.STRING,
                 password: Sequelize.STRING,
                 phone: Sequelize.STRING,
+                disabled: {
+                    type: Sequelize.BOOLEAN,
+                    defaultValue: false
+                }
             },
             {
                 sequelize,

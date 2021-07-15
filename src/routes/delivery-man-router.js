@@ -6,7 +6,7 @@ const deliveryManController = require("../controller/delivery-man-controller");
 
 deliveryManRouter.get("/", deliveryManController.all);
 deliveryManRouter.post("/", deliveryManController.save);
-deliveryManRouter.get("/:cpf", deliveryManController.find);
+deliveryManRouter.get("/:cpf", deliveryManController.findByCpf);
 deliveryManRouter.put("/:id", deliveryManController.update);
 deliveryManRouter.put("/:id/disable", deliveryManController.disable);
 

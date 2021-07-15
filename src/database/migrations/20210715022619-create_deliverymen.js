@@ -16,6 +16,7 @@ module.exports = {
       cpf: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING,
@@ -24,6 +25,11 @@ module.exports = {
       phone: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      disabled: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        default: false
       },
     });
   },
