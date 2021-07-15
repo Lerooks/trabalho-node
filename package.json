@@ -12,12 +12,15 @@
     "sequelize": "^6.6.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "sequelize-cli": "^6.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r dotenv/config ./index.js",
-    "start": "node -r dotenv/config ./index.js"
+    "start": "node -r dotenv/config ./index.js",
+    "migration": "npx sequelize-cli db:migrate",
+    "migration:fresh": "npx sequelize-cli db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
