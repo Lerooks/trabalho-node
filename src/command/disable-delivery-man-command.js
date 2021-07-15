@@ -1,16 +1,17 @@
-const Assert = require("../utils/assert");
+const Joi = require("joi");
 
 class DisableDeliveryManCommand {
-  
-  static from(data) {
-      Assert.keyExists(data, 'id', 'Field "id" is required');
-      Assert.stringNotEmpty(data['id'], 'Field "id" is empty');
+  static schema = Joi.object({
+    id: Joi.number().required(),
+  }).required();
 
-      return {
-        ...data,
-      };
-    }
+  static async from(data) {
+    await this.schema.validateAsync(data);
+
+    return {
+      ...data,
+    };
   }
-  
-  module.exports = DisableDeliveryManCommand;
-  
+}
+
+module.exports = DisableDeliveryManCommand;

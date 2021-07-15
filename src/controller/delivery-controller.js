@@ -28,7 +28,7 @@ module.exports = {
   async save(req, res) {
     try {
       const payload = req.body;
-      const command = CreateDeliveryCommand.from(payload);
+      const command = await CreateDeliveryCommand.from(payload);
       const delivery = await DeliveryService.save(command);
 
       res.status(201).send(delivery);
@@ -39,7 +39,7 @@ module.exports = {
   async update(req, res) {
     try {
       const payload = req.body;
-      const command = UpdateDeliveryCommand.from(payload);
+      const command = await UpdateDeliveryCommand.from(payload);
       const updated = await DeliveryService.update(command);
       const delivery = await DeliveryService.findById(command.id);
 
@@ -51,7 +51,7 @@ module.exports = {
   async delete(req, res) {
     try {
       const params = req.params;
-      const command = DeleteDeliveryCommand.from(params);
+      const command = await DeleteDeliveryCommand.from(params);
       const deleted = await DeliveryService.delete(command);
 
       res.status(204).send(null);
