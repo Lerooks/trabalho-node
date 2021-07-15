@@ -13,3 +13,4 @@ docker-compose up --build
 
 que ele já vai se encarregar de inicializar os containers
 
+
