@@ -21,4 +21,9 @@ DeliveryMan.hasMany(Delivery, {
     foreignKey: "deliveryman_id"
 });
 
+Delivery.belongsTo(DeliveryMan, {
+    as: "delivery_man",
+    foreignKey: "deliveryman_id"
+});
+
 module.exports = connection;
