@@ -1,14 +1,28 @@
+const Delivery = require("../model/delivery-model");
 const DeliveryMan = require("../model/delivery-man-model");
 
 module.exports = {
   async all() {
-    return await DeliveryMan.findAll();
+    return await DeliveryMan.findAll({
+      include: [
+        {
+          model: Delivery,
+          as: "deliveries",
+        },
+      ],
+    });
   },
   async findById(id) {
     const deliveryMan = await DeliveryMan.findOne({
       where: {
         id,
       },
+      include: [
+        {
+          model: Delivery,
+          as: "deliveries",
+        },
+      ],
     });
 
     if (!deliveryMan) {
@@ -22,6 +36,12 @@ module.exports = {
       where: {
         cpf,
       },
+      include: [
+        {
+          model: Delivery,
+          as: "deliveries",
+        },
+      ],
     });
 
     if (!deliveryMan) {
@@ -34,10 +54,10 @@ module.exports = {
     try {
       const isCpfDuplicated = await DeliveryMan.findOne({
         where: {
-          cpf: command['cpf'],
+          cpf: command["cpf"],
         },
       });
-  
+
       if (isCpfDuplicated) {
         throw new Error("Duplicated field 'cpf'");
       }
@@ -53,8 +73,8 @@ module.exports = {
     try {
       const updated = await DeliveryMan.update(command, {
         where: {
-          cpf: command['cpf']
-        }
+          cpf: command["cpf"],
+        },
       });
 
       return updated;
@@ -66,8 +86,8 @@ module.exports = {
     try {
       const updated = await DeliveryMan.update(command, {
         where: {
-          id: command['id']
-        }
+          id: command["id"],
+        },
       });
 
       return updated;
@@ -77,11 +97,14 @@ module.exports = {
   },
   async disable(command) {
     try {
-      const updated = await DeliveryMan.update({ disabled: true }, {
-        where: {
-          id: command['id']
+      const updated = await DeliveryMan.update(
+        { disabled: true },
+        {
+          where: {
+            id: command["id"],
+          },
         }
-      });
+      );
 
       return updated;
     } catch (error) {

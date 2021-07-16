@@ -1,8 +1,10 @@
 const Joi = require("joi");
 
-class DisableDeliveryManCommand {
+class CreateDeliveryCommand {
   static schema = Joi.object({
-    id: Joi.number().required(),
+    description: Joi.string().required(),
+    value: Joi.number().required(),
+    deliveryman_id: Joi.number().required(),
   }).required();
 
   static async from(data) {
@@ -14,4 +16,4 @@ class DisableDeliveryManCommand {
   }
 }
 
-module.exports = DisableDeliveryManCommand;
+module.exports = CreateDeliveryCommand;
