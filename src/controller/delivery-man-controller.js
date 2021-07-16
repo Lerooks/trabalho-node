@@ -25,7 +25,7 @@ module.exports = {
   async save(req, res) {
     try {
       const payload = req.body;
-      const command = CreateDeliveryManCommand.from(payload);
+      const command = await CreateDeliveryManCommand.from(payload);
       const deliveryMan = await DeliveryManService.save(command);
 
       res.status(201).send(deliveryMan);
@@ -36,7 +36,7 @@ module.exports = {
   async update(req, res) {
     try {
       const payload = req.body;
-      const command = UpdateDeliveryManCommand.from(payload);
+      const command = await UpdateDeliveryManCommand.from(payload);
       const updated = await DeliveryManService.updateByCpf(command);
       const deliveryMan = await DeliveryManService.findByCpf(command.cpf);
 
@@ -48,7 +48,7 @@ module.exports = {
   async disable(req, res) {
     try {
       const params = req.params;
-      const command = DisableDeliveryManCommand.from(params);
+      const command = await DisableDeliveryManCommand.from(params);
       const updated = await DeliveryManService.disable(command);
       const deliveryMan = await DeliveryManService.findById(command.id);
 

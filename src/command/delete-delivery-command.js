@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-class DisableDeliveryManCommand {
+class DeleteDeliveryCommand {
   static schema = Joi.object({
     id: Joi.number().required(),
   }).required();
@@ -14,4 +14,4 @@ class DisableDeliveryManCommand {
   }
 }
 
-module.exports = DisableDeliveryManCommand;
+module.exports = DeleteDeliveryCommand;

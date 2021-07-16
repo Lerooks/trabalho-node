@@ -1,16 +1,15 @@
-const Assert = require("../utils/assert");
+const Joi = require("joi");
 
 class CreateDeliveryManCommand {
-  static from(data) {
-    Assert.keyExists(data, 'name', 'Field "name" is required');
-    Assert.keyExists(data, 'cpf', 'Field "cpf" is required');
-    Assert.keyExists(data, 'password', 'Field "password" is required');
-    Assert.keyExists(data, 'phone', 'Field "phone" is required');
+  static schema = Joi.object({
+    name: Joi.string().required(),
+    cpf: Joi.string().required(),
+    password: Joi.string().required(),
+    phone: Joi.string().required(),
+  }).required();
 
-    Assert.stringNotEmpty(data['name'], 'Field "name" is empty');
-    Assert.stringNotEmpty(data['cpf'], 'Field "cpf" is empty');
-    Assert.stringNotEmpty(data['password'], 'Field "password" is empty');
-    Assert.stringNotEmpty(data['phone'], 'Field "phone" is empty');
+  static async from(data) {
+    await this.schema.validateAsync(data);
 
     return {
       ...data,
