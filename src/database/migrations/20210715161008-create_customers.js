@@ -2,9 +2,9 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Customers", {
+    await queryInterface.createTable("customers", {
       id: {
-        type: Sequelize.INTERGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      cpf: {
+      cnpj: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
@@ -26,7 +26,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Customers");
+    await queryInterface.dropTable("customers");
   }
 };
 
