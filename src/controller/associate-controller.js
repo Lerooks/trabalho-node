@@ -46,7 +46,7 @@ module.exports = {
         try {
             const payload = req.body;
             const command = await UpdateAssociateCommand.from(payload);
-            const updated = await AssociateService.update(command);
+            const updated = await AssociateService.updateByCnpj(command);
             const associate = await AssociateService.findById(command.id);
 
             res.status(200).send(associate);

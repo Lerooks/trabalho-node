@@ -2,6 +2,7 @@ const Joi = require("joi");
 
 class UpdateAssociateCommand {
   static schema = Joi.object({
+    id: Joi.number().required(),
     name: Joi.string().required(),
     cnpj: Joi.string().required(),
     password: Joi.string().required(),
