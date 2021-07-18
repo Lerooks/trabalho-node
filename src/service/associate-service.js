@@ -1,4 +1,5 @@
 const Associate = require("../model/associate-model");
+const LoginUserCommand = require("../command/login-user-command");
 
 module.exports = {
   async all() {
@@ -37,10 +38,20 @@ module.exports = {
           cnpj: command["cnpj"],
         },
       });
+
       if (isCnpjDuplicated) {
         throw new Error("Duplicated field 'cnpj'");
       }
+
+      if (!LoginUserCommand.validPassword(command.password)) {
+        throw new Error(
+          "Minimum eight characters, at least one letter, one number and one special character"
+        );
+      }
+
+      command.password = LoginUserCommand.generatePassword(command.password);
       const associate = await Associate.create(command);
+
       return associate;
     } catch (error) {
       throw new Error(error);
