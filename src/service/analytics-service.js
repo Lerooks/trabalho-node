@@ -77,8 +77,5 @@ module.exports = {
             valueAssociate: (valueTotal * 0.30).toFixed(2)
 
         }
-    },
-    async findFinancialDeliveryManReport() {
-
     }
 };

@@ -1,6 +1,7 @@
 const Delivery = require("../model/delivery-model");
 const DeliveryMan = require("../model/delivery-man-model");
-const LoginUserCommand = require('../command/login-user-command')
+const LoginUserCommand = require('../command/login-user-command');
+const { FINISHED } = require("../enum/delivery-status");
 
 module.exports = {
   async all() {
@@ -117,4 +118,23 @@ module.exports = {
       throw new Error(error);
     }
   },
+  async findDeliveryManAnalyticsQuery(command) {
+    try {
+      const { id } = command;
+
+      const deliveryMan = await DeliveryMan.findOne({ where: { id } });
+      if (!deliveryMan) throw new Error('not find delivery man')
+
+      const valueTotal = await Delivery.sum('value', {
+        where: { status: FINISHED, deliveryman_id: deliveryMan.id }
+      })
+
+      return {
+        valueTotal: valueTotal.toFixed(2),
+
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 };
