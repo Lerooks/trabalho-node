@@ -16,6 +16,6 @@ router.delete(`${API_VERSION}/logout`, logout);
 router.use(`${API_VERSION}/deliverymen`, deliveryManRouter);
 router.use(`${API_VERSION}/deliveries`, deliveryRouter);
 router.use(`${API_VERSION}/customers`, customerRouter);
-router.use(`${API_VERSION}/associates`", associateRouter);
+router.use(`${API_VERSION}/associates`, associateRouter);
 
 module.exports = router;
