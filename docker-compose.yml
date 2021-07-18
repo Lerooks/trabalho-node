@@ -1,6 +1,11 @@
 version: '3.7'
 
 services: 
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
   mysqldb:
     image: mysql
     restart: always
@@ -27,8 +32,13 @@ services:
       - ./node_modules:/node_modules
     depends_on:
       - mysqldb
+      - redis
     stdin_open: true
     tty: true
+    links:
+      - redis
+    environment:
+      - REDIS_URL=redis://cache
 
 volumes: 
   db-config:

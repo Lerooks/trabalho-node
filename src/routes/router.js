@@ -5,13 +5,15 @@ const deliveryRouter = require("./delivery-router");
 const customerRouter = require("./customer-router");
 const associateRouter = require("./associate-router");
 const router = express.Router();
+const auth = require('../middlewares/auth');
 
 router.get("/", (_, res) => res.send({ alive: true }));
 
 const API_VERSION = '/api/v1';
 
+// middlewares
 router.post(`${API_VERSION}/login`, authentication);
-router.delete(`${API_VERSION}/logout`, logout);
+router.post(`${API_VERSION}/logout`,logout);
 
 router.use(`${API_VERSION}/deliverymen`, deliveryManRouter);
 router.use(`${API_VERSION}/deliveries`, deliveryRouter);
