@@ -1,46 +1,30 @@
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-
-// ela recebe id do usuário que está logado, gera um número aleatório
-function generateToken(id) {
-    process.env.JWT_SECRET = Math.random().toString(36).slice(-20);
-    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: 82800, // expira em 24 horas;
-    })
-    return token
-}
+const { authenticate, invalidToken } = require("../service/authentication-service");
+const LoginUserCommand = require("../command/login-user-command");
 
 module.exports = {
     async authentication(req, res) {
-        const email = req.body.email;
-        const password = req.body.password;
-
-        if (!email || !password)
-            return req.status(400).json({ data: "Campos obrigatórios vazios! " });
         try {
-            const user = await User.findOne({
-                where: { email }
-            })
-            if (!user)
-                return res.status(404).json({ data: "Usuário e senha inválidos" })
-            else
-                if (bcrypt.compareSync(password, user.password)) {
-                    const token = generateToken(user.id);
-                    return res
-                        .status(200)
-                        .json({ data: "Autenticação válida", token })
-                } else {
-                    return res.status(404).json({ data: "Usuário e senha inválidos" })
-                }
+            const command = await LoginUserCommand.from(req.body);
+
+            LoginUserCommand.isCpfOrCpnj(command.login)
+            const token = await authenticate(command);
+
+            res.status(200).send({ token });
         } catch (error) {
-            res.status(404).json(error)
+            res.status(400).send({ error: error.message });
         }
     },
     async logout(req, res) {
         try {
-            res.status(400).json({ data: "Campos obrigatórios vazios! " });
+            let token = req.headers['x-access-token'];
+            if (!token) throw Error('token undefined')
+
+            if (invalidToken(token))
+                res.status(200).send()
+
+            throw Error('logout not possible')
         } catch (error) {
-            res.status(404).json({ error })
+            res.status(400).send({ error: error.message });
         }
     }
 }

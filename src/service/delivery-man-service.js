@@ -1,5 +1,6 @@
 const Delivery = require("../model/delivery-model");
 const DeliveryMan = require("../model/delivery-man-model");
+const LoginUserCommand = require('../command/login-user-command')
 
 module.exports = {
   async all() {
@@ -62,6 +63,11 @@ module.exports = {
         throw new Error("Duplicated field 'cpf'");
       }
 
+      if (!LoginUserCommand.validPassword(command.password)) {
+        throw new Error("Minimum eight characters, at least one letter, one number and one special character");
+      }
+
+      command.password = LoginUserCommand.generatePassword(command.password);
       const deliveryMan = await DeliveryMan.create(command);
 
       return deliveryMan;
