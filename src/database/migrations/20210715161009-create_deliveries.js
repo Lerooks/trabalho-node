@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       value: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(2),
         allowNull: false,
       },
       client_id: {
