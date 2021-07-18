@@ -1,5 +1,6 @@
 const DeliveryMan = require("../model/delivery-man-model");
 const Delivery = require("../model/delivery-model");
+const Customer = require("../model/customer-model");
 const DeliveryManService = require("../service/delivery-man-service");
 
 module.exports = {
@@ -20,6 +21,10 @@ module.exports = {
           model: DeliveryMan,
           as: "delivery_man",
         },
+        {
+          model: Customer,
+          as: "customer",
+        },
       ],
       where,
     });
@@ -35,6 +40,10 @@ module.exports = {
         {
           model: DeliveryMan,
           as: "delivery_man",
+        },
+        {
+          model: Customer,
+          as: "customer",
         },
       ],
     });

@@ -18,17 +18,29 @@ module.exports = {
         allowNull: false,
       },
       value: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(2),
         allowNull: false,
+      },
+      client_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: {
+            tableName: "customers"
+          },
+          key: "id",
+        },
+        onUpdate: "RESTRICT",
+        onDelete: "RESTRICT",
       },
       deliveryman_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: {
-            tableName: 'delivery_men'
+            tableName: "delivery_men",
           },
-          key: 'id'
+          key: "id",
         },
         onUpdate: "RESTRICT",
         onDelete: "RESTRICT",

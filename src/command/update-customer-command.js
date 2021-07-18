@@ -1,19 +1,19 @@
-const Assert = require("../utils/assert");
+const Joi = require("joi");
 
 class UpdateCustomerCommand {
-    static from(data) {
-      Assert.keyExists(data, 'name', 'Field "name" is required');
-      Assert.keyExists(data, 'cnpj', 'Field "cnpj" is required');
-      Assert.keyExists(data, 'address', 'Field "address" is required');
-  
-      Assert.stringNotEmpty(data['name'], 'Field "name" is empty');
-      Assert.stringNotEmpty(data['cnpj'], 'Field "cnpj" is empty');
-      Assert.stringNotEmpty(data['address'], 'Field "address" is empty');
+  static schema = Joi.object({
+    name: Joi.string().required(),
+    cnpj: Joi.string().required(),
+    address: Joi.string().required(),
+  }).required();
 
-      return {
-        ...data,
-      };
-    }
+  static async from(data) {
+    await this.schema.validateAsync(data);
+
+    return {
+      ...data,
+    };
   }
-  
-  module.exports = UpdateCustomerCommand;
+}
+
+module.exports = UpdateCustomerCommand;
