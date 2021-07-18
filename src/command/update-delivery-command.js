@@ -4,12 +4,12 @@ const DeliveryStatus = require("../enum/delivery-status");
 class UpdateDeliveryCommand {
   static schema = Joi.object({
     id: Joi.number().required(),
-    description: Joi.string().required(),
-    value: Joi.number().required(),
-    status: Joi.number().required(),
-    customer_id: Joi.number().required(),
-    deliveryman_id: Joi.number().required(),
-  }).required();
+    description: Joi.string(),
+    value: Joi.number(),
+    status: Joi.number(),
+    customer_id: Joi.number(),
+    deliveryman_id: Joi.number(),
+  });
 
   static async from(data) {
     await this.schema.validateAsync(data);

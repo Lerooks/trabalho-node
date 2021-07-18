@@ -9,5 +9,6 @@ deliveryManRouter.post("/", deliveryManController.save);
 deliveryManRouter.get("/:cpf", deliveryManController.findByCpf);
 deliveryManRouter.put("/:id", deliveryManController.update);
 deliveryManRouter.put("/:id/disable", deliveryManController.disable);
+deliveryManRouter.get('/:id/analytics/financial', deliveryManController.report)
 
 module.exports = deliveryManRouter;

@@ -4,6 +4,7 @@ const deliveryManRouter = require("./delivery-man-router");
 const deliveryRouter = require("./delivery-router");
 const customerRouter = require("./customer-router");
 const associateRouter = require("./associate-router");
+const analyticsRouter = require("./analytic-router");
 const router = express.Router();
 const auth = require('../middlewares/auth');
 
@@ -19,5 +20,6 @@ router.use(`${API_VERSION}/deliverymen`, deliveryManRouter);
 router.use(`${API_VERSION}/deliveries`, deliveryRouter);
 router.use(`${API_VERSION}/customers`, customerRouter);
 router.use(`${API_VERSION}/associates`, associateRouter);
+router.use(`${API_VERSION}/analytics`, analyticsRouter);
 
 module.exports = router;
