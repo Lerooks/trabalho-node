@@ -4,7 +4,7 @@ class CreateDeliveryCommand {
   static schema = Joi.object({
     description: Joi.string().required(),
     value: Joi.number().required(),
-    client_id: Joi.number().required(),
+    customer_id: Joi.number().required(),
     deliveryman_id: Joi.number().required(),
   }).required();
 

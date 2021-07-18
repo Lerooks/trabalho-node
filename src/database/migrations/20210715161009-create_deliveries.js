@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.DECIMAL(2),
         allowNull: false,
       },
-      client_id: {
+      customer_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

@@ -25,12 +25,12 @@ DeliveryMan.hasMany(Delivery, {
 
 Delivery.belongsTo(Customer, {
     as: "customer",
-    foreignKey: "client_id"
+    foreignKey: "customer_id"
 });
 
 Customer.hasMany(Delivery, {
     as: "deliveries",
-    foreignKey: "client_id"
+    foreignKey: "customer_id"
 });
 
 module.exports = connection;
