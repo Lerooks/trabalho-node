@@ -1,10 +1,10 @@
 module.exports = {
   dialect: 'mysql',
-  host: '172.17.0.1',
-  port: 3306,
-  username: 'root',
-  password: 'senha123',
-  database: 'trab_node',
+  host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_LOCAL_PORT,
+  username: process.env.MYSQL_USERNAME,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
   timezone: '-03:00',
   define: {
       timestamps: true,
