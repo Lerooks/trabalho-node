@@ -7,6 +7,7 @@ const associateRouter = require("./associate-router");
 const analyticsRouter = require("./analytic-router");
 const router = express.Router();
 const auth = require('../middlewares/auth');
+const accessControl = require('../middlewares/access_control');
 
 router.get("/", (_, res) => res.send({ alive: true }));
 
@@ -14,12 +15,12 @@ const API_VERSION = '/api/v1';
 
 // middlewares
 router.post(`${API_VERSION}/login`, authentication);
-router.post(`${API_VERSION}/logout`,logout);
+router.post(`${API_VERSION}/logout`, logout);
 
-router.use(`${API_VERSION}/deliverymen`, deliveryManRouter);
-router.use(`${API_VERSION}/deliveries`, deliveryRouter);
-router.use(`${API_VERSION}/customers`, customerRouter);
+router.use(`${API_VERSION}/deliverymen`, auth, accessControl, deliveryManRouter);
+router.use(`${API_VERSION}/deliveries`, auth, accessControl, deliveryRouter);
+router.use(`${API_VERSION}/customers`, auth, accessControl, customerRouter);
 router.use(`${API_VERSION}/associates`, associateRouter);
-router.use(`${API_VERSION}/analytics`, analyticsRouter);
+router.use(`${API_VERSION}/analytics`, auth, accessControl, analyticsRouter);
 
 module.exports = router;

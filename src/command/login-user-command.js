@@ -30,10 +30,10 @@ class LoginUserCommand {
         throw Error('Not a cpf or cpnj')
     }
 
-    static generateToken(id) {
+    static generateToken(id, role) {
         process.env.JWT_SECRET = Math.random().toString(36).slice(-20);
-        const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-            expiresIn: 82800, // expira em 24 horas;
+        const token = jwt.sign({ id, role}, process.env.JWT_SECRET, {
+            expiresIn: 60*60*5, // expira em 5 horas;
         })
         return token
     }

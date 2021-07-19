@@ -7,8 +7,7 @@ module.exports = {
             const command = await LoginUserCommand.from(req.body);
 
             LoginUserCommand.isCpfOrCpnj(command.login)
-            const token = await authenticate(command);
-
+            const [token] = await authenticate(command);
             res.status(200).send({ token });
         } catch (error) {
             res.status(400).send({ error: error.message });
