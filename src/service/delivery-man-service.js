@@ -68,6 +68,10 @@ module.exports = {
         throw new Error("Minimum eight characters, at least one letter, one number and one special character");
       }
 
+      if(!LoginUserCommand.isCpf(command.cpf)){
+        throw new Error("does not correspond to a cpf, please use: xxx.xxx.xxx-xx");
+      }
+
       command.password = LoginUserCommand.generatePassword(command.password);
       const deliveryMan = await DeliveryMan.create(command);
 

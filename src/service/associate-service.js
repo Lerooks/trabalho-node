@@ -49,6 +49,10 @@ module.exports = {
         );
       }
 
+      if(!LoginUserCommand.isCnpj(command.cnpj)){
+        throw new Error("does not correspond to a cnpj, please use: xx.xxx.xxx/xxxx-xx");
+      }
+
       command.password = LoginUserCommand.generatePassword(command.password);
       const associate = await Associate.create(command);
 
