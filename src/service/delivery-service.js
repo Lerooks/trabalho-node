@@ -2,6 +2,7 @@ const DeliveryMan = require("../model/delivery-man-model");
 const Delivery = require("../model/delivery-model");
 const Customer = require("../model/customer-model");
 const DeliveryManService = require("../service/delivery-man-service");
+const CustomerService = require("../service/customer-service");
 
 module.exports = {
   async all(query) {
@@ -15,7 +16,11 @@ module.exports = {
       where.deliveryman_id = query.deliveryman_id;
     }
 
-    if (query.hasOwnProperty('role') && query.role == 'deliver_man' && query.userId)
+    if (
+      query.hasOwnProperty("role") &&
+      query.role == "deliver_man" &&
+      query.userId
+    )
       where.deliveryman_id = query.userId;
 
     const deliveries = Delivery.findAll({
@@ -66,6 +71,12 @@ module.exports = {
       if (!deliveryMan) {
         throw new Error("Delivery Man not found");
       }
+      
+      const customer = await CustomerService.findById(command["customer_id"]);
+
+      if (!customer) {
+        throw new Error("Customer not found");
+      }
 
       const delivery = await Delivery.create(command);
 
@@ -82,7 +93,10 @@ module.exports = {
         throw new Error("Delivery not found");
       }
 
-      if (command.role === 'deliver_man' && command.userId !== delivery.deliveryman_id)
+      if (
+        command.role === "deliver_man" &&
+        command.userId !== delivery.deliveryman_id
+      )
         return false;
 
       const updated = await Delivery.update(command, {

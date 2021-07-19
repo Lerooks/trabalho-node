@@ -4,15 +4,17 @@ module.exports = {
   async all() {
     return await Customer.findAll();
   },
-  async findById() {
+  async findById(id) {
     const customer = await Customer.findOne({
       where: {
         id,
       },
     });
+
     if (!customer) {
       throw new Error("Customer not found");
     }
+    
     return customer;
   },
   async findByCnpj(cnpj) {
