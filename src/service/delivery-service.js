@@ -73,12 +73,11 @@ module.exports = {
   },
   async update(command) {
     try {
-      const deliveryMan = await DeliveryManService.findById(
-        command["deliveryman_id"]
-      );
+      console.log(command);
+      const delivery = await Delivery.findByPk(command.id);
 
-      if (!deliveryMan) {
-        throw new Error("Delivery Man not found");
+      if (!delivery) {
+        throw new Error("Delivery not found");
       }
 
       const updated = await Delivery.update(command, {

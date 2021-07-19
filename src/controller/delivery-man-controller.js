@@ -2,6 +2,7 @@ const DeliveryManService = require("../service/delivery-man-service");
 const CreateDeliveryManCommand = require("../command/create-delivery-man-command");
 const UpdateDeliveryManCommand = require("../command/update-delivery-man-command");
 const DisableDeliveryManCommand = require("../command/disable-delivery-man-command");
+const FindDeliveryMenAnalyticsQuery = require("../query/find_delivery_men_analytics_query");
 
 module.exports = {
   async all(req, res) {
@@ -57,4 +58,15 @@ module.exports = {
       res.status(400).send({ error: error.message });
     }
   },
+  async report(req, res) {
+    try {
+      const params = req.params;
+      const command = await FindDeliveryMenAnalyticsQuery.from(params);
+      const report = await DeliveryManService.findDeliveryManAnalyticsQuery(params);
+
+      res.status(200).send(report);
+    } catch (error) {
+      res.status(400).send({ error: error.message });
+    }
+  }
 };

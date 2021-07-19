@@ -24,12 +24,7 @@ module.exports = {
       customer_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: {
-            tableName: "customers"
-          },
-          key: "id",
-        },
+        references: { model: "customers", key: "id" },
         onUpdate: "RESTRICT",
         onDelete: "RESTRICT",
       },
