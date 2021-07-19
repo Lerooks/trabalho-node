@@ -68,7 +68,7 @@ module.exports = {
         throw new Error("Minimum eight characters, at least one letter, one number and one special character");
       }
 
-      if(!LoginUserCommand.isCpf(command.cpf)){
+      if (!LoginUserCommand.isCpf(command.cpf)) {
         throw new Error("does not correspond to a cpf, please use: xxx.xxx.xxx-xx");
       }
 
@@ -108,6 +108,8 @@ module.exports = {
   },
   async disable(command) {
     try {
+      if (command.role === 'deliver_man') return false
+
       const updated = await DeliveryMan.update(
         { disabled: true },
         {
