@@ -24,7 +24,7 @@ function checkDeliveryManPermission(req, route) {
 
 async function accessControl(req, res, next) {
     const token = req.headers['x-access-token'];
-    if (!token) return res.status(401).json({ msg: "token indefined" });
+    if (!token) return res.status(401).json({ msg: "token undefined" });
     try {
         let decode = jwt.decode(token);
         let route = req.baseUrl.replace('/api/v1/', '')
@@ -38,10 +38,10 @@ async function accessControl(req, res, next) {
             if (permission.granted)
                 return next()
         }
-        return res.status(403).json({ msg: 'dont have access' })
+        return res.status(403).json({ msg: 'Forbidden' })
     } catch (error) {
         console.log(error);
-        res.status(500).json({ msg: 'dont have access' })
+        res.status(500).json({ msg: 'Forbidden' })
     }
 }
 

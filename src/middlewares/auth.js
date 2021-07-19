@@ -3,7 +3,7 @@ const redisClient = require('../../redis-client');
 
 async function verifyJWT(req, res, next) {
     const token = req.headers['x-access-token'];
-    if (!token) return res.status(401).json({ msg: "token indefined" });
+    if (!token) return res.status(401).json({ msg: "token undefined" });
 
     const rawData = await redisClient.getAsync(token);
     if (rawData) return res.status(401).send();
