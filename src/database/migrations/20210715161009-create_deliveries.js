@@ -25,8 +25,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { model: "customers", key: "id" },
-        onUpdate: "RESTRICT",
-        onDelete: "RESTRICT",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       deliveryman_id: {
         type: Sequelize.INTEGER,
@@ -37,8 +37,8 @@ module.exports = {
           },
           key: "id",
         },
-        onUpdate: "RESTRICT",
-        onDelete: "RESTRICT",
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
     });
   },
