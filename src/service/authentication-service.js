@@ -10,7 +10,7 @@ module.exports = {
 
         if (LoginUserCommand.isCpf(login)) {
             user = await DeliveryMan.findOne({ where: { cpf: login } })
-            if (user.disabled)
+            if (user && user.disabled)
                 throw new Error('user disable on database, please contact us')
             role = 'deliver_man'
         }

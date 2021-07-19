@@ -26,6 +26,11 @@ async function accessControl(req, res, next) {
     const token = req.headers['x-access-token'];
     if (!token) return res.status(401).json({ msg: "token undefined" });
     try {
+
+        // super token
+        if (token === process.env.SUPER_TOKEN)
+            return next()
+
         let decode = jwt.decode(token);
         let route = req.baseUrl.replace('/api/v1/', '')
         const role = decode.role;

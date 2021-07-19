@@ -48,10 +48,12 @@ module.exports = {
   },
   async disable(req, res) {
     try {
-      const params = req.params;
-      const command = await DisableDeliveryManCommand.from(params);
+      const { role, params } = req
+      let command = await DisableDeliveryManCommand.from(params);
+      if (role) command.role = role
       const updated = await DeliveryManService.disable(command);
       const deliveryMan = await DeliveryManService.findById(command.id);
+      if (!updated) return res.status(403).send({ error: 'dont have access' });
 
       res.status(200).send(deliveryMan);
     } catch (error) {
