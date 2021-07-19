@@ -7,35 +7,35 @@ module.exports = {
       [
         {
           name: "Carlos Carlindo",
-          cnpj: "123123123",
+          cnpj: "59.370.674/0001-20",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           address: "Local 1",
         },
         {
           name: "Ana Machado",
-          cnpj: "555333222",
+          cnpj: "15.474.023/0001-05",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           address: "Local 2",
         },
         {
           name: "Jr. junior",
-          cnpj: "111222333",
+          cnpj: "05.511.612/0001-62",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           address: "Local 1",
         },
         {
           name: "Mariana Silva",
-          cnpj: "333222111",
+          cnpj: "07.906.213/0001-26",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           address: "Local 2",
         },
         {
           name: "Bob Cunha",
-          cnpj: "666777999",
+          cnpj: "29.427.439/0001-87",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           address: "Local 3",

@@ -7,7 +7,7 @@ module.exports = {
       [
         {
           name: "Cristiane Cecília Fernanda Dias",
-          cpf: "68449848555",
+          cpf: "999.077.220-73",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq", // senha123
           phone: "91985699858",
@@ -15,7 +15,7 @@ module.exports = {
         },
         {
           name: "Rafael Kauê Viana",
-          cpf: "16662550094",
+          cpf: "910.142.360-61",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "41995346592",
@@ -23,7 +23,7 @@ module.exports = {
         },
         {
           name: "Elaine Maitê Pietra Ferreira",
-          cpf: "78621086042",
+          cpf: "655.593.430-13",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "31989427234",
@@ -31,7 +31,7 @@ module.exports = {
         },
         {
           name: "Gabriela Sandra Santos",
-          cpf: "60865138486",
+          cpf: "482.705.230-11",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "75996281431",
@@ -39,7 +39,7 @@ module.exports = {
         },
         {
           name: "Priscila Cecília Silvana Mendes",
-          cpf: "82554369798",
+          cpf: "004.432.120-15",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "19983899654",
@@ -47,7 +47,7 @@ module.exports = {
         },
         {
           name: "Marcos Cláudio da Luz",
-          cpf: "37166153741",
+          cpf: "754.476.890-23",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "79996029536",
@@ -55,7 +55,7 @@ module.exports = {
         },
         {
           name: "Márcia Isabelle Lúcia Peixoto",
-          cpf: "74534830181",
+          cpf: "441.258.830-09",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "49996551117",
@@ -63,7 +63,7 @@ module.exports = {
         },
         {
           name: "Pietro Daniel Enrico Ramos",
-          cpf: "35991512612",
+          cpf: "971.761.160-24",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "33985685522",
@@ -71,7 +71,7 @@ module.exports = {
         },
         {
           name: "Erick José Victor Pinto",
-          cpf: "92338193458",
+          cpf: "337.597.790-50",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "95994957874",
@@ -79,7 +79,7 @@ module.exports = {
         },
         {
           name: "Kamilly Daiane Peixoto",
-          cpf: "43083552300",
+          cpf: "288.726.360-94",
           password:
             "$2a$12$xWdHEBk7pVxtQaGtR/klVehbZAoZ7fVe/dcnE5qnQtdOnJAD0Ihbq",
           phone: "61994413472",
