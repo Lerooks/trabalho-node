@@ -3,14 +3,15 @@ const CreateDeliveryCommand = require("../command/create-delivery-command");
 const UpdateDeliveryCommand = require("../command/update-delivery-command");
 const DeleteDeliveryCommand = require("../command/delete-delivery-command");
 const FindDeliveryQuery = require("../query/find-delivery-query");
+const FindAllDeliveriesQuery = require("../query/find-all-deliveries-query");
 
 module.exports = {
   async all(req, res) {
     try {
       const { role, userId } = req;
       const params = req.query;
-
-      const query = FindDeliveryQuery.from(params);
+      const query = await FindAllDeliveriesQuery.from(params);
+      
       if (role)
         query.role = role;
       if (userId)
