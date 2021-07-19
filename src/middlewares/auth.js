@@ -10,8 +10,8 @@ async function verifyJWT(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err)
-            return res.status(401).json({ msg: "Falha na autenticação do token" })
-        req.sellerId = decoded.id;
+            return res.status(401).json({ msg: "token invalid" })
+        req.userId = decoded.id;
         next();
     })
 }

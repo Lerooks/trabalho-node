@@ -118,12 +118,14 @@ module.exports = {
       throw new Error(error);
     }
   },
-  async findDeliveryManAnalyticsQuery(command) {
+  async findDeliveryManAnalyticsQuery(command, role = '', userId) {
     try {
       const { id } = command;
 
       const deliveryMan = await DeliveryMan.findOne({ where: { id } });
       if (!deliveryMan) throw new Error('not find delivery man')
+
+      if (role === 'deliver_man' && deliveryMan.id !== userId) return false
 
       const valueTotal = await Delivery.sum('value', {
         where: { status: FINISHED, deliveryman_id: deliveryMan.id }

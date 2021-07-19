@@ -60,9 +60,10 @@ module.exports = {
   },
   async report(req, res) {
     try {
-      const params = req.params;
+      const { role, userId, params } = req
       const command = await FindDeliveryMenAnalyticsQuery.from(params);
-      const report = await DeliveryManService.findDeliveryManAnalyticsQuery(params);
+      const report = await DeliveryManService.findDeliveryManAnalyticsQuery(params, role, userId);
+      if (!report) return res.status(403).send({ error: 'dont have access' });
 
       res.status(200).send(report);
     } catch (error) {

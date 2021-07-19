@@ -5,10 +5,17 @@ const DeleteDeliveryCommand = require("../command/delete-delivery-command");
 const FindDeliveryQuery = require("../query/find-delivery-query");
 
 module.exports = {
-  async all(req, res) {    
+  async all(req, res) {
     try {
+      const { role, userId } = req;
       const params = req.query;
+
       const query = FindDeliveryQuery.from(params);
+      if (role)
+        query.role = role;
+      if (userId)
+        query.userId = userId;
+
       const deliveryMen = await DeliveryService.all(query);
       res.send(deliveryMen);
     } catch (error) {
@@ -38,9 +45,17 @@ module.exports = {
   },
   async update(req, res) {
     try {
+      const { role, userId } = req;
       const payload = req.body;
-      const command = await UpdateDeliveryCommand.from(payload);
+      let command = await UpdateDeliveryCommand.from(payload);
+      if (role)
+        command.role = role;
+      if (userId)
+        command.userId = userId;
       const updated = await DeliveryService.update(command);
+      if (!updated)
+        return res.status(403).send({ error: 'dont have access ' })
+
       const delivery = await DeliveryService.findById(command.id);
 
       res.status(200).send(delivery);

@@ -4,6 +4,7 @@
   "description": "Trabalho de Node",
   "main": "index.js",
   "dependencies": {
+    "accesscontrol": "^2.2.1",
     "bcryptjs": "^2.4.3",
     "connect-redis": "^6.0.0",
     "dotenv": "^10.0.0",
