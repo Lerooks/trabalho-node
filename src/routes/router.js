@@ -20,7 +20,7 @@ router.post(`${API_VERSION}/logout`, logout);
 router.use(`${API_VERSION}/deliverymen`, auth, accessControl, deliveryManRouter);
 router.use(`${API_VERSION}/deliveries`, auth, accessControl, deliveryRouter);
 router.use(`${API_VERSION}/customers`, auth, accessControl, customerRouter);
-router.use(`${API_VERSION}/associates`, associateRouter);
+router.use(`${API_VERSION}/associates`, accessControl, associateRouter);
 router.use(`${API_VERSION}/analytics`, auth, accessControl, analyticsRouter);
 
 module.exports = router;
